@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="w-50 m-auto shadow-lg my-4 p-5">
+    <h2>CRUDs System</h2>
+    <input id="prodName" type="text" class="form-control my-3" placeholder="Enter Product name" />
+    <input id="prodCategory" type="text" class="form-control my-3" placeholder="Enter Product category" />
+    <input id="prodPrice" type="number" class="form-control my-3" placeholder="Enter Product price" />
+
+    <textarea id="prodDesc" class="form-control my-3" cols="30" rows="5"
+      placeholder="Enter Product Description"></textarea>
+    <button class="btn btn-primary" onclick="pushProducts()">Add Product</button>
+
+    <input id="search" type="text" class="form-control my-3" placeholder="Search" onkeyup="search(this.value)" />
+
+  </div>
+
+
+
+  <div class="container">
+    <table class="table">
+
+
+
+      <thead>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </thead>
+
+      <tbody id="tbody">
+
+      </tbody>
+
+    </table>
+  </div>
+
+  <script src="/css/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
