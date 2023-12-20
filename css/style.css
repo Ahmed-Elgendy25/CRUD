@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f7ecde;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+}
+h2 {
+  font-family: 'Righteous', sans-serif;
+  background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.inputs {
+  border-top: 2px dotted black;
+  border-bottom: 2px dotted black;
+}

@@ -1,84 +1,84 @@
-var prodNameInput = document.getElementById('prodName');
-var prodCategoryInput = document.getElementById('prodCategory');
-var prodPriceInput = document.getElementById('prodPrice');
-var prodDescInput = document.getElementById('prodDesc');
+var siteName = document.getElementById('siteName');
+var siteURL = document.getElementById('siteURL');
 
-var prodList = [];
-if (localStorage.getItem('products')) {
-  prodList = JSON.parse(localStorage.getItem('products'));
-  displayProducts();
+var bookmarks = [];
+if (localStorage.getItem('website')) {
+  bookmarks = JSON.parse(localStorage.getItem('website'));
+  displayWebsite();
 }
 
-function pushProducts() {
-  var products = {
-    name: prodNameInput.value,
-    category: prodCategoryInput.value,
-    price: prodPriceInput.value,
-    description: prodDescInput.value,
+function pushWebSites() {
+  var website = {
+    name: siteName.value,
+    siteURL: siteURL.value,
   };
+  if (isUrl(siteURL.value)) {
+    bookmarks.push(website);
 
-  prodList.push(products);
-
-  console.log(prodList);
-  localStorage.setItem('products', JSON.stringify(prodList));
-  displayProducts();
+    console.log(bookmarks);
+    localStorage.setItem('website', JSON.stringify(bookmarks));
+    displayWebsite();
+  }
 }
 
-function displayProducts() {
+function displayWebsite() {
   var cartona = ``;
 
-  for (var i = 0; i < prodList.length; i++) {
+  for (var i = 0; i < bookmarks.length; i++) {
     cartona += `
   <tr>
-  <td>${i}</td>
-  <td>${prodList[i].name}</td>
-  <td>${prodList[i].category}</td>
-  <td>${prodList[i].price}</td>
-  <td>${prodList[i].description} </td>
-  <td><button class="btn btn-danger" onclick="deleteProduct(${i})"> delete</button></td>
-  <td><button class="btn btn-warning"  onclick="updateProduct(${i})"> update</button></td>
+  <td>${i + 1}</td>
+  <td>${bookmarks[i].name}</td>
+  <td><button class="btn btn-success " onclick="visitWebsite(${i})"> Visit</button></td>
+  <td><button class="btn btn-danger"  onclick="deleteWebSite(${i})"> Delete</button></td>
 </tr>
   `;
   }
   document.getElementById('tbody').innerHTML = cartona;
 }
 
-function deleteProduct(index) {
-  prodList.splice(index, 1);
-  localStorage.setItem('products', JSON.stringify(prodList));
-  displayProducts();
+function deleteWebSite(index) {
+  bookmarks.splice(index, 1);
+  localStorage.setItem('website', JSON.stringify(bookmarks));
+  displayWebsite();
 }
 
 function search(value) {
   var cartona = ``;
-  for (var i = 0; i < prodList.length; i++) {
-    if (prodList[i].name.toLowerCase().includes(value.toLowerCase())) {
+  for (var i = 0; i < bookmarks.length; i++) {
+    if (bookmarks[i].name.toLowerCase().includes(value.toLowerCase())) {
       cartona += `
-  <tr>
-  <td>${i}</td>
-  <td>${prodList[i].name}</td>
-  <td>${prodList[i].category}</td>
-  <td>${prodList[i].price}</td>
-  <td>${prodList[i].description} </td>
-  <td><button class="btn btn-danger" onclick="deleteProduct(${i})"> delete</button></td>
-  <td><button class="btn btn-warning"  onclick="updateProduct(${i})"> update</button></td>
-</tr>
-  `;
+      <tr>
+      <td>${i}</td>
+      <td>${bookmarks[i].name}</td>
+      <td>${bookmarks[i].siteURL}</td>
+    
+    
+      <td><button class="btn btn-success " onclick="deleteProduct(${i})"> Visit</button></td>
+      <td><button class="btn btn-danger"  onclick="updateProduct(${i})"> Delete</button></td>
+    </tr>
+      `;
     }
   }
 
   document.getElementById('tbody').innerHTML = cartona;
 }
 
+function isUrl(s) {
+  var regexp =
+    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+  return regexp.test(s);
+}
+
 // function updateProduct(index) {
-//   var products = {
+//   var website = {
 //     name: prodNameInput.value,
 //     category: prodCategoryInput.value,
 //     price: prodPriceInput.value,
 //     description: prodDescInput.value,
 //   };
 
-//   prodList.splice(index, 0, products);
-//   localStorage.setItem('products', JSON.stringify(prodList));
-//   displayProducts();
+//   bookmarks.splice(index, 0, website);
+//   localStorage.setItem('website', JSON.stringify(bookmarks));
+//   displaywebsite();
 // }
