@@ -8,6 +8,8 @@
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
+
+
   <!-- google fonts -->
 
 
@@ -22,7 +24,7 @@
 
 <body>
 
-  <main class="">
+  <main>
     <div class="container">
 
       <h1 class="display-5 p-5 text-center text-black">Bookmarker</h1>
@@ -44,7 +46,18 @@
             URL</label>
           <input type="text" id="siteURL" class="form-control" id="formGroupExampleInput" placeholder="Website URL">
         </div>
-        <button class="btn btn-md btn-danger mx-auto px-5 " onclick="pushWebSites()">Submit</button>
+
+        <div class=" p-2">
+
+          <input type="text" id="siteURL" class="form-control" id="formGroupExampleInput" placeholder="Search..."
+            onkeyup="search(this.value)">
+
+        </div>
+
+        <div class=" mx-auto">
+          <button class="btn btn-md btn-danger mx-auto px-5 " id="submitBtn" onclick="pushWebSites()">Submit</button>
+          <button class="btn btn-md btn-warning mx-auto px-5  " id="updateBtn" onclick="updateWebsite()">Update</button>
+        </div>
 
       </div>
 
@@ -59,6 +72,7 @@
           <th scope="col">Website Name</th>
           <th scope="col">Visit</th>
           <th scope="col">Delete</th>
+          <th scope="col">Update</th>
         </tr>
       </thead>
       <tbody id="tbody">
@@ -71,6 +85,8 @@
   <script src=" /css/bootstrap.bundle.min.js">
   </script>
   <script src="main.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </body>
 

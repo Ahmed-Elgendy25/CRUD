@@ -9,7 +9,35 @@ body {
 
 h1 {
   font-family: 'Pacifico', cursive;
+  position: relative;
+
+  margin: 0 auto;
 }
+
+h1::before {
+  background-color: #fec260;
+  content: '';
+  position: absolute;
+
+  width: 20%;
+  height: 20px;
+  bottom: 30%;
+  left: 40%;
+
+  z-index: -2;
+  transition: height 0.3s ease;
+}
+@media screen and (max-width: 600px) {
+  h1::before {
+    width: 42%;
+    left: 30%; /* Adjust the width for smaller screens */
+  }
+}
+
+h1:hover::before {
+  height: 50px;
+}
+
 h2 {
   font-family: 'Righteous', sans-serif;
   background-image: linear-gradient(to right, #3ca55c, #b5ac49);
@@ -20,4 +48,8 @@ h2 {
 .inputs {
   border-top: 2px dotted black;
   border-bottom: 2px dotted black;
+}
+
+#updateBtn {
+  display: none;
 }
